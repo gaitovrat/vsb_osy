@@ -1,5 +1,5 @@
 CXX=gcc
-FLAGS=-Wall
+FLAGS=-Wall -g
 OUT=pre
 OUT_DIR=out
 SOURCE=main.c sol.c
