@@ -1,10 +1,11 @@
 CXX=gcc
+FLAGS=-Wall
 OUT=pre
 OUT_DIR=out
 SOURCE=main.c sol.c
 
 all: preparation
-	$(CXX) $(SOURCE) -o $(OUT)
+	$(CXX) $(FLAGS) $(SOURCE) -o $(OUT_DIR)/$(OUT)
 
 preparation:
 	@rm -rf $(OUT_DIR)
