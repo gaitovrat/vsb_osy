@@ -1,13 +1,8 @@
-#include <stdio.h>
-
 #include "sol.h"
 
-int main(int argc, const char** argv)
+int main(int argv, const char** argc)
 {
-    for (int i = 0; i < argc; ++i)
-        printf("%s\n", argv[i]);
-
-    test("TEST 1");
+    first();
 
     return 0;
 }

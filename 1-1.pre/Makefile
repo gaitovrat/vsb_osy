@@ -1,5 +1,5 @@
 CXX=gcc
-FLAGS=-Wall -g
+FLAGS=-Wall -g -DDEBUG
 OUT=pre
 OUT_DIR=out
 SOURCE=main.c sol.c
