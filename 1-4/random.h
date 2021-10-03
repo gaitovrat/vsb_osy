@@ -1,3 +1,6 @@
+#ifndef RANDOM_H
+#define RANDOM_H
+
 /**
  * Generate random number
  * @param min is minimal value that can be returned
@@ -18,3 +21,5 @@ int randomNumbers(int max);
  * @return value between 0 and 100
  */
 int randomNumbers();
+
+#endif
