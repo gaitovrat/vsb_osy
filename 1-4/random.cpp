@@ -3,18 +3,18 @@
 #include <stdlib.h>
 #include <time.h>
 
-int randomNumbers(int lower, int upper)
+int randomNumber(int lower, int upper)
 {
     srand(time(NULL));
     return (rand() % (upper - lower + 1)) + lower;
 }
 
-int randomNumbers(int max)
+int randomNumber(int max)
 {
-    return randomNumbers(0, max);
+    return randomNumber(0, max);
 }
 
-int randomNumbers()
+int randomNumber()
 {
-    return randomNumbers(0, 100);
+    return randomNumber(0, 100);
 }
