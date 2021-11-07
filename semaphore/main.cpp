@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <pthread.h>
-#include <ctime>
+#include <random>
 
 #define N 100
 
@@ -90,12 +90,15 @@ struct Data {
 };
 
 int random_number(int min = 0, int max = 100) {
-    srand(time(nullptr));
-    return (rand() % (max - min + 1)) + min;
+    std::random_device device;
+    std::default_random_engine seed(device());
+    std::uniform_int_distribution<int> range(min, max);
+
+    return range(seed);
 }
 
 void insert(int item, Data *data) {
-    buffer[data->full.getValue()] = item;
+    buffer[N - data->empty.getValue() - 1] = item;
 }
 
 int remove(Data *data) {
@@ -109,7 +112,7 @@ int remove(Data *data) {
 
 [[noreturn]] void *producer(void *ptr) {
     Data *data = (Data *) ptr;
-    int item = 0;
+    int item;
 
     while (true) {
         item = random_number();
