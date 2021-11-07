@@ -1,8 +1,6 @@
 #include <fcntl.h>
-#include <sys/stat.h>
 #include <semaphore.h>
 #include <cstdio>
-#include <cstdint>
 #include <cstdlib>
 #include <pthread.h>
 #include <ctime>
