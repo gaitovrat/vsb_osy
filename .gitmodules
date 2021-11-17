@@ -1,0 +1,3 @@
+[submodule "chat_cpp"]
+	path = chat_cpp
+	url = git@github.com:gaitovrat/chat_cpp.git
