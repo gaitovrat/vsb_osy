@@ -1,4 +1,3 @@
-#include <log.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -37,7 +36,7 @@ int main(int argc, char **argv)
         if (!strncmp(buffer, "$?", strlen("$?"))) 
         {
             sprintf(buffer, "%d", stat);
-            log(info, buffer);
+            printf("%s\n", buffer);
             continue;
         }
 
@@ -80,14 +79,15 @@ int main(int argc, char **argv)
         int command_pipe[2];
         if (pipe(command_pipe) < 0)
         {
-            log(error, "Unable to create pipe");
+            fprintf(stderr, "Unable to create pipe");
+
             exit(FAILURE);
         }       
 
         int pids[2];
         if ((pids[0] = fork()) < 0)
         {
-            log(error, "Unable to create new process 1!");
+            fprintf(stderr, "Unable to create new process 1!");
             continue;
         }
 
@@ -120,7 +120,7 @@ int main(int argc, char **argv)
             int cmd_stat = execvp(commands[0][0], commands[0]);
 
             if (cmd_stat < 0)
-                log(error, "Unable to execute command!");
+                fprintf(stderr, "Unable to execute command!");
             exit(FAILURE);
         } 
 
@@ -128,7 +128,7 @@ int main(int argc, char **argv)
         {
             if ((pids[1] = fork()) < 0)
             {
-                log(error, "Unable to create new process 2!");
+                fprintf(stderr, "Unable to create new process 2!");
                 continue;
 
             }
@@ -161,7 +161,7 @@ int main(int argc, char **argv)
                 int cmd_stat = execvp(commands[1][0], commands[1]);
 
                 if (cmd_stat < 0)
-                    log(error, "Unable to execute command!");
+                    fprintf(stderr, "Unable to execute command!");
                 exit(FAILURE);
             }
         }
